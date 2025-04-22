@@ -18,5 +18,6 @@ module lk.ijse.gdse71.serenity_therapy {
 
 
     opens lk.ijse.gdse71.serenity_therapy to javafx.fxml;
+    opens lk.ijse.gdse71.serenity_therapy.controller to javafx.fxml;
     exports lk.ijse.gdse71.serenity_therapy;
 }

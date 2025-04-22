@@ -20,14 +20,14 @@ public class AppInitializer extends Application {
     @Override
     public void start(Stage stage) throws IOException {
 
-        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/LoadingView.fxml"))));
+        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/LoadingScreenView.fxml"))));
         stage.show();
 
         Task<Scene> loadMainSceneTask = new Task<>() {
             @Override
             protected Scene call() throws Exception {
                 // Load the main layout from FXML
-                FXMLLoader fxmlLoader = new FXMLLoader(AppInitializer.class.getResource("/view/MainLayout.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(AppInitializer.class.getResource("/view/Login.fxml"));
                 return new Scene(fxmlLoader.load()); // Return the loaded scene
             }
         };
@@ -35,9 +35,9 @@ public class AppInitializer extends Application {
         loadMainSceneTask.setOnSucceeded(event -> {
             Scene value = loadMainSceneTask.getValue();
 
-            stage.setTitle("Supermarket FX");
-            stage.getIcons().add(new Image(getClass().getResourceAsStream("/images/app_logo.png")));
-            stage.setMaximized(true);
+            stage.setTitle("Serenity Therapy");
+            stage.getIcons().add(new Image(getClass().getResourceAsStream("/images/logo.png")));
+//            stage.setMaximized(true);
 
             // Switch to the main scene
             stage.setScene(value);

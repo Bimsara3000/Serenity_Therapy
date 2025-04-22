@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="500.0" minWidth="800.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse.supermarket.controller.MainLayoutController">
+<AnchorPane minHeight="500.0" minWidth="800.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse71.serenity_therapy.controller.MainLayoutController">
    <children>
       <!-- Side Menu -->
       <VBox alignment="TOP_CENTER" prefWidth="200.0" spacing="50.0" style="-fx-background-color: #7367F0;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
