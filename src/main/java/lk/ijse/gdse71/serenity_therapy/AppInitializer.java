@@ -22,6 +22,7 @@ public class AppInitializer extends Application {
 
         stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/LoadingScreenView.fxml"))));
         stage.show();
+        stage.centerOnScreen();
 
         Task<Scene> loadMainSceneTask = new Task<>() {
             @Override
@@ -41,6 +42,7 @@ public class AppInitializer extends Application {
 
             // Switch to the main scene
             stage.setScene(value);
+            stage.centerOnScreen();
         });
 
         loadMainSceneTask.setOnFailed(event -> {
