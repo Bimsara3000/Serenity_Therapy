@@ -7,14 +7,11 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import lk.ijse.gdse71.serenity_therapy.config.FactoryConfiguration;
-import lk.ijse.gdse71.serenity_therapy.entity.Laptop;
-import lk.ijse.gdse71.serenity_therapy.entity.Student;
+import lk.ijse.gdse71.serenity_therapy.entity.User;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class AppInitializer extends Application {
     @Override
@@ -53,6 +50,8 @@ public class AppInitializer extends Application {
     }
 
     public static void main(String[] args) {
+
         launch();
+
     }
 }

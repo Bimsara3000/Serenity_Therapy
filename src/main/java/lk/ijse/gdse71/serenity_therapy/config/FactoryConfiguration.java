@@ -1,7 +1,6 @@
 package lk.ijse.gdse71.serenity_therapy.config;
 
-import lk.ijse.gdse71.serenity_therapy.entity.Laptop;
-import lk.ijse.gdse71.serenity_therapy.entity.Student;
+import lk.ijse.gdse71.serenity_therapy.entity.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -25,8 +24,12 @@ public class FactoryConfiguration {
 
         configuration.setProperties(properties);
 
-        configuration.addAnnotatedClass(Laptop.class);
-        configuration.addAnnotatedClass(Student.class);
+        configuration.addAnnotatedClass(User.class);
+        configuration.addAnnotatedClass(Patient.class);
+        configuration.addAnnotatedClass(Program.class);
+        configuration.addAnnotatedClass(Therapist.class);
+        configuration.addAnnotatedClass(Payment.class);
+        configuration.addAnnotatedClass(lk.ijse.gdse71.serenity_therapy.entity.Session.class);
 
         sessionFactory = configuration.buildSessionFactory();
     }
