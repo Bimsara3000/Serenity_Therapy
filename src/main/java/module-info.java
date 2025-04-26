@@ -13,8 +13,7 @@ module lk.ijse.gdse71.serenity_therapy {
 
     opens lk.ijse.gdse71.serenity_therapy.entity to org.hibernate.orm.core;
     opens lk.ijse.gdse71.serenity_therapy.config to jakarta.persistence;
-
-//    opens lk.ijse.gdse.supermarket.dto.tm to javafx.base;
+    opens lk.ijse.gdse71.serenity_therapy.dto.tm to javafx.base;
 
 
     opens lk.ijse.gdse71.serenity_therapy to javafx.fxml;

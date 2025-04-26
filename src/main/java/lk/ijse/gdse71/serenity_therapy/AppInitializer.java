@@ -49,9 +49,5 @@ public class AppInitializer extends Application {
         new Thread(loadMainSceneTask).start();
     }
 
-    public static void main(String[] args) {
-
-        launch();
-
-    }
+    public static void main(String[] args) {launch();}
 }

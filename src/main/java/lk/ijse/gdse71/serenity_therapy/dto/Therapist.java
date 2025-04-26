@@ -1,9 +1,6 @@
-package lk.ijse.gdse71.serenity_therapy.entity;
+package lk.ijse.gdse71.serenity_therapy.dto;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,13 +14,10 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Therapist {
-    @Id
     private String id;
     private String name;
     private String speciality;
     private String availability;
-    @OneToMany(mappedBy = "therapist")
-    private List<Program> programs;
-    @OneToMany(mappedBy = "therapist", cascade = CascadeType.ALL)
+    private List<ProgramDTO> programs;
     private List<Session> sessions;
 }
