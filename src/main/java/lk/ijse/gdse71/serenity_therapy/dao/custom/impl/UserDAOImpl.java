@@ -2,9 +2,10 @@ package lk.ijse.gdse71.serenity_therapy.dao.custom.impl;
 
 import lk.ijse.gdse71.serenity_therapy.bo.exeception.NotFoundException;
 import lk.ijse.gdse71.serenity_therapy.config.FactoryConfiguration;
-import lk.ijse.gdse71.serenity_therapy.dao.custom.PatientDAO;
+import lk.ijse.gdse71.serenity_therapy.dao.custom.UserDAO;
 import lk.ijse.gdse71.serenity_therapy.entity.Patient;
 import lk.ijse.gdse71.serenity_therapy.entity.Program;
+import lk.ijse.gdse71.serenity_therapy.entity.User;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
@@ -12,13 +13,13 @@ import org.hibernate.query.Query;
 import java.sql.SQLException;
 import java.util.List;
 
-public class PatientDAOImpl implements PatientDAO {
+public class UserDAOImpl implements UserDAO {
     private final FactoryConfiguration factoryConfiguration = FactoryConfiguration.getInstance();
 
     @Override
-    public List<Patient> getAll() throws SQLException, ClassNotFoundException {
+    public List<User> getAll() throws SQLException, ClassNotFoundException {
         Session session = factoryConfiguration.getSession();
-        Query<Patient> query = session.createQuery("from Patient", Patient.class);
+        Query<User> query = session.createQuery("from User", User.class);
         return query.list();
     }
 
@@ -27,7 +28,7 @@ public class PatientDAOImpl implements PatientDAO {
         Session session = factoryConfiguration.getSession();
 
         String lastId = session
-                .createQuery("SELECT p.id FROM Patient p ORDER BY p.id DESC", String.class)
+                .createQuery("SELECT u.id FROM User u ORDER BY u.id DESC ", String.class)
                 .setMaxResults(1)
                 .uniqueResult();
 
@@ -36,26 +37,20 @@ public class PatientDAOImpl implements PatientDAO {
             int i = Integer.parseInt(substring);
             int newIdIndex = i + 1;
             session.close();
-            return String.format("P%03d", newIdIndex);
+            return String.format("U%03d", newIdIndex);
         }
-        return "P001";
+        return "U001";
     }
 
     @Override
-    public boolean save(Patient patient) throws SQLException, ClassNotFoundException {
+    public boolean save(User user) throws SQLException, ClassNotFoundException {
         Transaction transaction = null;
         Session session = null;
         try {
             session = factoryConfiguration.getSession();
             transaction = session.beginTransaction();
 
-            List<Program> programs = patient.getPrograms();
-            for (int i = 0; i < programs.size(); i++) {
-                Program managedProgram = session.merge(programs.get(i));
-                programs.set(i, managedProgram); // replace with the managed one
-            }
-
-            session.persist(patient);
+            session.persist(user);
             transaction.commit();
             return true;
         } catch (Exception e) {
@@ -68,26 +63,19 @@ public class PatientDAOImpl implements PatientDAO {
     }
 
     @Override
-    public boolean update(Patient patient) throws SQLException, ClassNotFoundException {
+    public boolean update(User user) throws SQLException, ClassNotFoundException {
         Transaction transaction = null;
         Session session = null;
         try {
             session = factoryConfiguration.getSession();
             transaction = session.beginTransaction();
 
-            List<Program> programs = patient.getPrograms();
-            for (int i = 0; i < programs.size(); i++) {
-                Program managedProgram = session.merge(programs.get(i));
-                programs.set(i, managedProgram); // replace with the managed one
-            }
+            User user1 = session.get(User.class, user.getId());
 
-            Patient patient1 = session.get(Patient.class, patient.getId());
-
-            if (patient1 != null) {
-                patient1.setPrograms(programs);
-                patient1.setName(patient.getName());
-                patient1.setEmail(patient.getEmail());
-                patient1.setPhone(patient.getPhone());
+            if (user1 != null) {
+                user1.setRole(user.getRole());
+                user1.setName(user.getName());
+                user1.setPassword(user.getPassword());
             }
 
             transaction.commit();
@@ -106,21 +94,12 @@ public class PatientDAOImpl implements PatientDAO {
         Session session = factoryConfiguration.getSession();
         Transaction transaction = session.beginTransaction();
         try {
-            Patient patient = session.get(Patient.class, id);
-            if (patient == null) {
-                throw new NotFoundException("Patient not found");
+            User user = session.get(User.class, id);
+            if (user == null) {
+                throw new NotFoundException("User not found");
             }
 
-            Patient patient1 = session.get(Patient.class, patient.getId());
-            Program program = session.get(Program.class, patient.getPrograms().get(0).getId());
-
-            patient1.getPrograms().remove(program);
-            program.getPatients().remove(patient);
-
-            session.saveOrUpdate(patient1);
-            session.saveOrUpdate(program);
-
-            session.remove(patient);
+            session.remove(user);
             transaction.commit();
             return true;
         } catch (Exception e) {
@@ -135,20 +114,6 @@ public class PatientDAOImpl implements PatientDAO {
 
     @Override
     public String getName(String id) throws SQLException, ClassNotFoundException {
-        return "";
-    }
-
-    @Override
-    public String getProgramId(String id) throws SQLException, ClassNotFoundException {
-        Session session = factoryConfiguration.getSession();
-        Patient patient = session.get(Patient.class, id);
-        List<Program> programs = patient.getPrograms();
-
-        if (!programs.isEmpty()) {
-            session.close();
-            return programs.get(0).getId();
-        }
-        session.close();
         return "";
     }
 }

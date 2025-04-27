@@ -60,6 +60,14 @@
                         <Font name="Calibri" size="24.0" />
                      </font>
                   </Button>
+                  <Button layoutX="10.0" layoutY="205.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#navigateToUserPage" style="-fx-background-color: #273c75;" text="User" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="OPEN_HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="Calibri" size="24.0" />
+                     </font>
+                  </Button>
                </children>
             </VBox>
          </children>

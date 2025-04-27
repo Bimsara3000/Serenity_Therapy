@@ -2,6 +2,7 @@ package lk.ijse.gdse71.serenity_therapy.dao;
 
 import lk.ijse.gdse71.serenity_therapy.dao.custom.impl.PatientDAOImpl;
 import lk.ijse.gdse71.serenity_therapy.dao.custom.impl.ProgramDAOImpl;
+import lk.ijse.gdse71.serenity_therapy.dao.custom.impl.UserDAOImpl;
 
 public class DAOFactory {
     private static DAOFactory daoFactory;
@@ -13,13 +14,14 @@ public class DAOFactory {
     }
 
     public enum DAOType{
-        PATIENT,PROGRAM
+        PATIENT,PROGRAM,USER
     }
 
     public SuperDAO getDAO(DAOType type) {
         switch (type) {
             case PATIENT: return new PatientDAOImpl();
             case PROGRAM: return new ProgramDAOImpl();
+            case USER: return new UserDAOImpl();
             default: return null;
         }
     }

@@ -159,9 +159,9 @@ public class PatientController implements Initializable {
 
                 if (isSaved) {
                     refresh();
-                    new Alert(Alert.AlertType.INFORMATION, "User saved!").show();
+                    new Alert(Alert.AlertType.INFORMATION, "Patient saved!").show();
                 } else {
-                    new Alert(Alert.AlertType.ERROR, "Failed to save user!").show();
+                    new Alert(Alert.AlertType.ERROR, "Failed to save patient!").show();
                 }
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR, "Database error!").show();
@@ -174,6 +174,13 @@ public class PatientController implements Initializable {
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
+        PatientTM patientTM = tblPatient.getSelectionModel().getSelectedItem();
+
+        if (patientTM == null) {
+            new Alert(Alert.AlertType.ERROR, "Please select a patient!").show();
+            return;
+        }
+
         String name = txtName.getText();
         String email = txtEmail.getText();
         String phone = txtPhone.getText();
@@ -222,9 +229,9 @@ public class PatientController implements Initializable {
 
                 patientDTO.setPrograms(programs);
 
-                boolean isSaved = patientBO.update(patientDTO);
+                boolean isUpdated = patientBO.update(patientDTO);
 
-                if (isSaved) {
+                if (isUpdated) {
                     refresh();
                     new Alert(Alert.AlertType.INFORMATION, "User updated!").show();
                 } else {
@@ -251,6 +258,7 @@ public class PatientController implements Initializable {
 
         btnDelete.setDisable(false);
         btnUpdate.setDisable(false);
+        btnSave.setDisable(true);
     }
 
     PatientBO patientBO = (PatientBO) BOFactory.getInstance().getBO(BOFactory.BOType.PATIENT);
@@ -327,6 +335,7 @@ public class PatientController implements Initializable {
         }
         btnDelete.setDisable(true);
         btnUpdate.setDisable(true);
+        btnSave.setDisable(false);
     }
 
     private void loadPrograms() throws SQLException {
