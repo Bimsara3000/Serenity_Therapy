@@ -12,6 +12,7 @@ import lk.ijse.gdse71.serenity_therapy.bo.BOFactory;
 import lk.ijse.gdse71.serenity_therapy.bo.custom.UserBO;
 import lk.ijse.gdse71.serenity_therapy.dto.UserDTO;
 import lk.ijse.gdse71.serenity_therapy.dto.tm.UserTM;
+import lk.ijse.gdse71.serenity_therapy.util.encription.PasswordEncryption;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -101,7 +102,7 @@ public class UserController implements Initializable {
     @FXML
     void btnSaveCustomerOnAction(ActionEvent event) {
         String name = txtName.getText();
-        String password = txtPassword.getText();
+        String password = PasswordEncryption.encryptPassword(txtPassword.getText());
         String role = txtRole.getText();
 
         txtName.setStyle(txtName.getStyle() + ";-fx-border-color: #7367F0;");
@@ -160,7 +161,7 @@ public class UserController implements Initializable {
         }
 
         String name = txtName.getText();
-        String password = txtPassword.getText();
+        String password = PasswordEncryption.encryptPassword(txtPassword.getText());
         String role = txtRole.getText();
 
         txtName.setStyle(txtName.getStyle() + ";-fx-border-color: #7367F0;");

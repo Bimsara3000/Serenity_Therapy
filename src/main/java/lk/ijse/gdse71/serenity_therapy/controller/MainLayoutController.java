@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
@@ -12,6 +13,24 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class MainLayoutController implements Initializable {
+
+    @FXML
+    private Button btnPatient;
+
+    @FXML
+    private Button btnPayment;
+
+    @FXML
+    private Button btnProgram;
+
+    @FXML
+    private Button btnSession;
+
+    @FXML
+    private Button btnTherapist;
+
+    @FXML
+    private Button btnUser;
 
     @FXML
     private AnchorPane content;
@@ -49,6 +68,10 @@ public class MainLayoutController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         navigateTo("/view/PatientView.fxml");
+
+        switch (LoginController.jobRole) {
+            case "Receptionist": btnUser.setDisable(true);
+        }
     }
 
     public void navigateTo(String fxmlPath) {

@@ -10,6 +10,7 @@ module lk.ijse.gdse71.serenity_therapy {
     requires org.hibernate.orm.core;
     requires jakarta.persistence;
     requires java.naming;
+    requires jbcrypt;
 
     opens lk.ijse.gdse71.serenity_therapy.entity to org.hibernate.orm.core;
     opens lk.ijse.gdse71.serenity_therapy.config to jakarta.persistence;

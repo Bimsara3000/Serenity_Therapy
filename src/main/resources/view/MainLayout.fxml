@@ -20,7 +20,7 @@
             <VBox maxHeight="200.0" spacing="5.0" VBox.vgrow="ALWAYS">
                <children>
                   <!-- Navigation Buttons -->
-                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#navigateToPatientPage" style="-fx-background-color: #273c75;" text="Patient" textFill="WHITE">
+                  <Button fx:id="btnPatient" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#navigateToPatientPage" style="-fx-background-color: #273c75;" text="Patient" textFill="WHITE">
                      <cursor>
                         <Cursor fx:constant="OPEN_HAND" />
                      </cursor>
@@ -28,7 +28,7 @@
                         <Font name="Calibri" size="24.0" />
                      </font>
                   </Button>
-                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#navigateToTherapistPage" style="-fx-background-color: #273c75;" text="Therapist" textFill="WHITE">
+                  <Button fx:id="btnTherapist" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#navigateToTherapistPage" style="-fx-background-color: #273c75;" text="Therapist" textFill="WHITE">
                      <cursor>
                         <Cursor fx:constant="OPEN_HAND" />
                      </cursor>
@@ -36,7 +36,7 @@
                         <Font name="Calibri" size="24.0" />
                      </font>
                   </Button>
-                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#navigateToProgramPage" style="-fx-background-color: #273c75;" text="Program" textFill="WHITE">
+                  <Button fx:id="btnProgram" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#navigateToProgramPage" style="-fx-background-color: #273c75;" text="Program" textFill="WHITE">
                      <cursor>
                         <Cursor fx:constant="OPEN_HAND" />
                      </cursor>
@@ -44,7 +44,7 @@
                         <Font name="Calibri" size="24.0" />
                      </font>
                   </Button>
-                  <Button layoutX="10.0" layoutY="108.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#navigateToSessionPage" style="-fx-background-color: #273c75;" text="Session" textFill="WHITE">
+                  <Button fx:id="btnSession" layoutX="10.0" layoutY="108.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#navigateToSessionPage" style="-fx-background-color: #273c75;" text="Session" textFill="WHITE">
                      <cursor>
                         <Cursor fx:constant="OPEN_HAND" />
                      </cursor>
@@ -52,7 +52,7 @@
                         <Font name="Calibri" size="24.0" />
                      </font>
                   </Button>
-                  <Button layoutX="10.0" layoutY="156.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#navigateToPaymentPage" style="-fx-background-color: #273c75;" text="Payment" textFill="WHITE">
+                  <Button fx:id="btnPayment" layoutX="10.0" layoutY="156.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#navigateToPaymentPage" style="-fx-background-color: #273c75;" text="Payment" textFill="WHITE">
                      <cursor>
                         <Cursor fx:constant="OPEN_HAND" />
                      </cursor>
@@ -60,7 +60,7 @@
                         <Font name="Calibri" size="24.0" />
                      </font>
                   </Button>
-                  <Button layoutX="10.0" layoutY="205.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#navigateToUserPage" style="-fx-background-color: #273c75;" text="User" textFill="WHITE">
+                  <Button fx:id="btnUser" layoutX="10.0" layoutY="205.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#navigateToUserPage" style="-fx-background-color: #273c75;" text="User" textFill="WHITE">
                      <cursor>
                         <Cursor fx:constant="OPEN_HAND" />
                      </cursor>
